@@ -8,7 +8,7 @@ package com.mycompany.manajemenarmadakereta;
  *
  * @author masdika
  */
-public class KeretaDiesel extends Kereta {
+public class KeretaDiesel extends Kereta implements DapatServis {
     private int kapasitasBensinLiter; 
 
     public KeretaDiesel(String kodeKereta, String namaKereta, int tahunOperasi, int kapasitasBensinLiter) {
@@ -32,6 +32,16 @@ public class KeretaDiesel extends Kereta {
 
     @Override
     public void caraOperasional() {
-        System.out.println("\n -> Info Operasional: Menggerakkan lokomotif menggunakan mesin diesel-elektrik untuk jalur jarak jauh.");
+        System.out.println(" -> Info Operasional: Menggerakkan lokomotif menggunakan mesin diesel-elektrik untuk jalur jarak jauh.");
+    }
+
+    @Override
+    public void hitungBiayaPerawatan() {
+        System.out.println(" -> [Abstract] Biaya Perawatan Diesel: Rp 25.000.000 / bulan (Fokus overhaul mesin diesel & transmisi).");
+    }
+
+    @Override
+    public void jadwalkanServisRutin() {
+        System.out.println(" -> [Interface Servis] Jadwal servis berkala Kereta Diesel dilakukan setelah 5.000 km perjalanan.");
     }
 }

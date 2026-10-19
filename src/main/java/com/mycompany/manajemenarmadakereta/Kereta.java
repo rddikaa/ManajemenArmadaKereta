@@ -8,7 +8,7 @@ package com.mycompany.manajemenarmadakereta;
  *
  * @author masdika
  */
-public class Kereta {
+public abstract class Kereta {
     protected String kodeKereta;
     protected String namaKereta;
     protected int tahunOperasi;
@@ -38,4 +38,6 @@ public class Kereta {
     public void caraOperasional() {
         System.out.println("Armada kereta beroperasi sesuai jalur rel utama.");
     }
+    
+    public abstract void hitungBiayaPerawatan();
 }

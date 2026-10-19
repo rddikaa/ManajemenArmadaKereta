@@ -8,9 +8,9 @@ package com.mycompany.manajemenarmadakereta;
  *
  * @author masdika
  */
-public class KeretaListrik extends Kereta {
-    private int jumlahRangkaian; 
-    
+public class KeretaListrik extends Kereta implements DapatServis, DapatSubsidi {
+    private int jumlahRangkaian;
+
     public KeretaListrik(String kodeKereta, String namaKereta, int tahunOperasi, int jumlahRangkaian) {
         super(kodeKereta, namaKereta, tahunOperasi);
         this.jumlahRangkaian = jumlahRangkaian;
@@ -32,6 +32,21 @@ public class KeretaListrik extends Kereta {
 
     @Override
     public void caraOperasional() {
-        System.out.println("\n -> Info Operasional: Menggunakan pasokan aliran listrik atas (Pantograph) untuk komuter perkotaan.");
+        System.out.println(" -> Info Operasional: Menggunakan pasokan aliran listrik atas (Pantograph) untuk komuter perkotaan.");
+    }
+
+    @Override
+    public void hitungBiayaPerawatan() {
+        System.out.println(" -> [Abstract] Biaya Perawatan KRL: Rp 15.000.000 / bulan (Fokus perawatan pantograf & kelistrikan).");
+    }
+
+    @Override
+    public void jadwalkanServisRutin() {
+        System.out.println(" -> [Interface Servis] Jadwal servis berkala KRL dilakukan setiap 1 bulan sekali di Depo KRL.");
+    }
+
+    @Override
+    public void hitungSubsidiOperasional() {
+        System.out.println(" -> [Interface Subsidi] KRL berhak menerima subsidi PSO (Public Service Obligation) dari pemerintah.");
     }
 }

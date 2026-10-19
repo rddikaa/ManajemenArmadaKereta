@@ -23,9 +23,7 @@ public class ManajemenArmadaKereta {
                 ditemukan = true;
             }
         }
-        if (!ditemukan) {
-            System.out.println("Armada kereta tidak ditemukan.");
-        }
+        if (!ditemukan) System.out.println("Armada kereta tidak ditemukan.");
     }
 
     public static void cariKereta(int tahunOperasi, Kereta[] daftarArmada, int jumlahArmada) {
@@ -39,9 +37,7 @@ public class ManajemenArmadaKereta {
                 ditemukan = true;
             }
         }
-        if (!ditemukan) {
-            System.out.println("Armada kereta tidak ditemukan.");
-        }
+        if (!ditemukan) System.out.println("Armada kereta tidak ditemukan.");
     }
 
     public static void simulasiOperasional(Kereta item) {
@@ -54,15 +50,15 @@ public class ManajemenArmadaKereta {
             int jumlahArmada = 0;
             boolean isRunning = true;
 
-            System.out.println("====================================================");
-            System.out.println("|| SISTEM MANAJEMEN ARMADA KERETA (TUGAS MODUL 6) ||");
-            System.out.println("====================================================");
+            System.out.println("==================================================");
+            System.out.println("||        SISTEM MANAJEMEN ARMADA KERETA        ||");
+            System.out.println("==================================================");
 
             while (isRunning) {
                 System.out.println("\nMenu Utama:");
                 System.out.println("1. Tambah Armada Kereta");
-                System.out.println("2. Lihat Daftar Armada (Dynamic Binding)");
-                System.out.println("3. Cari Kereta (Compile-time / Overloading)");
+                System.out.println("2. Lihat Daftar Armada (Abstraksi & Interface)");
+                System.out.println("3. Cari Kereta (Overloading)");
                 System.out.println("4. Keluar");
                 System.out.print("Pilih Menu: 1-4: ");
 
@@ -112,18 +108,31 @@ public class ManajemenArmadaKereta {
                         }
                     }
                     case 2 -> {
-                        System.out.println("\n--- Daftar Armada Kereta di Depo ---");
+                        System.out.println("\n--- Daftar Armada Kereta di Depo & Kontrak Perilaku ---");
                         if (jumlahArmada == 0) {
                             System.out.println("Belum ada armada kereta yang tersimpan.");
                         } else {
                             for (int i = 0; i < jumlahArmada; i++) {
                                 System.out.print((i + 1) + ". ");
-                                daftarArmada[i].tampilkanInfo(); 
+                                daftarArmada[i].tampilkanInfo();
                                 System.out.println();
-                                simulasiOperasional(daftarArmada[i]); 
+                                simulasiOperasional(daftarArmada[i]);
+                                
+                                daftarArmada[i].hitungBiayaPerawatan();
+
+                                if (daftarArmada[i] instanceof DapatServis) {
+                                    DapatServis itemServis = (DapatServis) daftarArmada[i];
+                                    itemServis.jadwalkanServisRutin();
+                                }
+
+                                if (daftarArmada[i] instanceof DapatSubsidi) {
+                                    DapatSubsidi itemSubsidi = (DapatSubsidi) daftarArmada[i];
+                                    itemSubsidi.hitungSubsidiOperasional();
+                                }
+
                                 System.out.println();
                             }
-                            System.out.println("\n Total Seluruh Armada: " + Kereta.totalKeretaBerhasilDibuat);
+                            System.out.println(" Total Seluruh Armada: " + Kereta.totalKeretaBerhasilDibuat);
                         }
                         System.out.print("Tekan Enter untuk melanjutkan...");
                         scanner.nextLine();
