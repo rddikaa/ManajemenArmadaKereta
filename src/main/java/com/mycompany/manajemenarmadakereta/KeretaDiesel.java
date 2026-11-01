@@ -8,11 +8,15 @@ package com.mycompany.manajemenarmadakereta;
  *
  * @author masdika
  */
-public class KeretaDiesel extends Kereta implements DapatServis {
-    private int kapasitasBensinLiter; 
 
-    public KeretaDiesel(String kodeKereta, String namaKereta, int tahunOperasi, int kapasitasBensinLiter) {
+public class KeretaDiesel extends Kereta implements DapatServis {
+    private int kapasitasBensinLiter;
+
+    public KeretaDiesel(String kodeKereta, String namaKereta, int tahunOperasi, int kapasitasBensinLiter) throws Exception {
         super(kodeKereta, namaKereta, tahunOperasi);
+        if (kapasitasBensinLiter <= 0) {
+            throw new Exception("Kapasitas bahan bakar diesel harus lebih dari 0 liter.");
+        }
         this.kapasitasBensinLiter = kapasitasBensinLiter;
     }
 

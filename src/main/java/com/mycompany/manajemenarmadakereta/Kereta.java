@@ -8,6 +8,7 @@ package com.mycompany.manajemenarmadakereta;
  *
  * @author masdika
  */
+
 public abstract class Kereta {
     protected String kodeKereta;
     protected String namaKereta;
@@ -15,14 +16,17 @@ public abstract class Kereta {
     
     public static int totalKeretaBerhasilDibuat = 0;
     
-    public Kereta(String kodeKereta, String namaKereta, int tahunOperasi) {
+    public Kereta(String kodeKereta, String namaKereta, int tahunOperasi) throws Exception {
+        if (tahunOperasi < 1800 || tahunOperasi > 2026) {
+            throw new Exception("Tahun operasi kereta tidak valid (harus di atas tahun 1800).");
+        }
         this.kodeKereta = kodeKereta;
         this.namaKereta = namaKereta;
         this.tahunOperasi = tahunOperasi;
         totalKeretaBerhasilDibuat++;
     }
     
-    public String getKodeKereta() { 
+    public String getKodeKereta() {
         return this.kodeKereta; 
     }
     

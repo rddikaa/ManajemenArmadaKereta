@@ -8,11 +8,15 @@ package com.mycompany.manajemenarmadakereta;
  *
  * @author masdika
  */
+
 public class KeretaCepat extends Kereta implements DapatServis {
     private int kecepatanMaksJam;
-    
-    public KeretaCepat(String kodeKereta, String namaKereta, int tahunOperasi, int kecepatanMaksJam) {
+
+    public KeretaCepat(String kodeKereta, String namaKereta, int tahunOperasi, int kecepatanMaksJam) throws Exception {
         super(kodeKereta, namaKereta, tahunOperasi);
+        if (kecepatanMaksJam <= 100) {
+            throw new Exception("Kecepatan maksimal kereta cepat harus di atas 100 km/jam.");
+        }
         this.kecepatanMaksJam = kecepatanMaksJam;
     }
 
